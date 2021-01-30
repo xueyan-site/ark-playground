@@ -21,7 +21,24 @@ yarn add xueyan-react-playground
 ## 示例 Example
 
 ```ts
+import React, { useState } from 'react'
+import Playground from 'xueyan-react-playground'
+
+const code = `
+import React, { useState } from 'react'
 import Switch from 'xueyan-react-playground'
 
-<Switch value={state} onChange={state => setState(state)}/>
+export default function UseSwitch() {
+  const [state, setState] = useState<boolean>(true)
+  return (
+    <div onClick={() => setState(!state)}>
+      {state ? 'opening' : 'closed'}
+    </div>
+  )
+}
+`
+
+const scope = { React, useState }
+
+<Playground code={code} scope={scope} />
 ```
