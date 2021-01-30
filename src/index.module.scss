@@ -1,0 +1,147 @@
+.playground {
+  margin-top: 0;
+  margin-bottom: 16px;
+  position: relative;
+  .liveBox {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow: auto;
+    border-radius: 6px;
+    background-color: #f6f8fa;
+    -webkit-overflow-scrolling: touch;
+  }
+  .space {
+    height: 4px;
+    background-color: transparent;
+  }
+  .tools {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0 6px;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,.1);
+    font-size: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tool {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    &.disabled {
+      opacity: .3;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+  background-color: rgba(0,0,0,.2);
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.hidden {
+    opacity: 0;
+  }
+  .editBox {
+    position: relative;
+  }
+  .editWindow {
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .editInner {
+    width: 80vw;
+    max-width: 1000px;
+    max-height: 80vh;
+    overflow: auto;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .runCode {
+    flex: 1;
+    min-width: 336px;
+    min-height: 120px;
+    background-color: #f6f8fa;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: auto;
+    color: #333;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+    .runCodeErr {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0,0,0,.1);
+      color: #333;
+      margin: 0;
+      padding: 16px;
+    }
+  }
+  .editCode {
+    flex: 1;
+    min-width: 336px;
+    background-color: #282c34;
+    padding: 16px;
+    caret-color: #c5c8c6;
+    box-sizing: border-box;
+    overflow: auto;
+    textarea:focus, textarea:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  .editTools {
+    position: absolute;
+    right: 0;
+    top: -30px;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0 6px;
+    border-radius: 3px;
+    background-color: #f6f8fa;
+    font-size: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.playground.dark {
+  .liveBox {
+    background-color: #282c34;
+  }
+  .tools {
+    background-color: rgba(255,255,255,.1);
+  }
+  .modal {
+    background-color: rgba(255,255,255,.2);
+    .editTools {
+      background-color: #282c34;
+    }
+  }
+}

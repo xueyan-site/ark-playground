@@ -1,0 +1,14 @@
+{
+  "type": "react-application",
+  "moduleAlias": {
+    "xueyan-react-playground": "../src",
+    "xueyan-react-markdown": "../node_modules/xueyan-react-markdown",
+    "pages": "src/pages"
+  },
+  "startProxy": [
+    {
+      "path": "^/api",
+      "target": "https://xxx.com"
+    }
+  ]
+}
