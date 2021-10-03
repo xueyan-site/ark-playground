@@ -1,16 +1,16 @@
-import { transpile, CompilerOptions, ScriptTarget, JsxEmit } from 'typescript'
+import { transpile } from 'typescript'
 
-const TS_OPTIONS: CompilerOptions = {
+const TS_OPTIONS = {
   noImplicitUseStrict: true,
-  target: ScriptTarget.ES2016,
-  jsx: JsxEmit.React
+  target: 3,
+  jsx: 2
 }
 
 export function transformCode(code: string): string {
   let funcName = ''
   code = code.replace(/\s*import(.|\n)*from\s+(.|\\n)*?\s+/g, '')
   code = code.replace(/export\s+default\s+function\s+(\w*)/g, (_match, arg1) => {
-    funcName = arg1 
+    funcName = arg1
     return 'function ' + arg1
   })
   if (funcName) {

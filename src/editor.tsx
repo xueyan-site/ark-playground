@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
-import classNames from 'classnames'
+import cn from 'classnames'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import { transformCode, copyText } from './tools'
-import styles from './index.module.scss'
 import { AnyObject } from './types'
+import styles from './editor.scss'
 
 enum VISIBLE_STATE {
   NONE = 0,
@@ -50,7 +50,7 @@ export default function EditBoxModal({
   const state = useVisibleState(visible)
   const [currCode, setCurrCode] = useState<string>(code)
   return state === VISIBLE_STATE.NONE ? null : (
-    <div className={classNames(styles.modal, state === VISIBLE_STATE.HIDDEN && styles.hidden)}>
+    <div className={cn(styles.modal, state === VISIBLE_STATE.HIDDEN && styles.hidden)}>
       <LiveProvider
         language="tsx"
         noInline={true}

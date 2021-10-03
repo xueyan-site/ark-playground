@@ -1,44 +1,12 @@
 # xueyan-react-playground
 
-xueyan-react-playground 是一个react包。  
-xueyan-react-playground is a react package.  
+Please see <https://xueyan.site/xueyan-react-playground>.
 
-本包创建自 xueyan <yang@xueyan.site>。  
-The project created by xueyan <yang@xueyan.site>.  
+## Develop
 
-## 下载 Install
+Please make sure that `Node` and `NPM` are installed on your computer, and `xueyan-typescript-cli` is installed globally. After switching current work path to this project root in CMD, you can run command `yarn start`.
 
-```bash
-# 如果你使用的是NPM：
-# if you use NPM: 
-npm i xueyan-react-playground
+## Appendix
 
-# 如果你使用的是Yarn：
-# if you use Yarn: 
-yarn add xueyan-react-playground
-```
-
-## 示例 Example
-
-```ts
-import React, { useState } from 'react'
-import Playground from 'xueyan-react-playground'
-
-const code = `
-import React, { useState } from 'react'
-import Switch from 'xueyan-react-playground'
-
-export default function UseSwitch() {
-  const [state, setState] = useState<boolean>(true)
-  return (
-    <div onClick={() => setState(!state)}>
-      {state ? 'opening' : 'closed'}
-    </div>
-  )
-}
-`
-
-const scope = { React, useState }
-
-<Playground code={code} scope={scope} />
-```
+author - xueyan-site <yang@xueyan.site>  
+builder - [xueyan-typescript-cli](https://github.com/xueyan-site/xueyan-typescript-cli)  
