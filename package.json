@@ -1,51 +1,48 @@
 {
   "name": "xueyan-react-playground",
-  "version": "1.0.1",
-  "author": "xueyan <yang@xueyan.site>",
+  "version": "1.1.0",
+  "author": "xueyan-site <yang@xueyan.site>",
   "license": "MIT",
   "description": "React Code Playground Component With Typescript",
-  "xueyan": "xueyan.json",
-  "main": "dist/lib",
-  "module": "dist/es",
-  "types": "dist/types",
+  "main": "dist/node",
+  "types": "dist/def",
+  "module": "dist/web",
+  "keywords": [
+    "playground",
+    "react",
+    "component",
+    "xueyan",
+    "typescript",
+    "code",
+    "live"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xueyan-site/xueyan-react-playground.git"
   },
-  "keywords": [
-    "playground",
-    "react",
-    "xueyan-typescript",
-    "markdown",
-    "code",
-    "live"
-  ],
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "start": "yarn start-doc",
-    "build": "xueyan-typescript build",
-    "watch": "xueyan-typescript build --watch",
-    "start-doc": "xueyan-typescript start doc",
-    "build-doc": "xueyan-typescript build doc",
-    "serve-doc": "xueyan-typescript serve doc"
+    "start": "xt start",
+    "build": "xt build",
+    "start-doc": "xt start doc",
+    "build-doc": "xt build doc",
+    "serve-doc": "xt serve doc"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "classnames": "^2.2.6",
-    "react-live": "^2.2.3"
+    "@babel/runtime": "^7.12.0",
+    "react-live": "^2.2.3",
+    "xueyan-react-markdown": "^2.0.1"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "xueyan-react-markdown": "^1.2.1"
+    "classnames": "^2.3.0",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.10",
-    "@types/react": "^16.9.49",
-    "react": "^16.13.1",
-    "typescript": "^4.0.3",
-    "xueyan-react-markdown": "^1.2.1"
+    "@types/react": ">=16.8.0",
+    "classnames": "^2.3.0",
+    "react": ">=16.8.0",
+    "typescript": "^4.0.0"
   }
 }
