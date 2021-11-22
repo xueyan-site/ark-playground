@@ -1,5 +1,5 @@
 import React from 'react'
-import Doc from 'utl/doc'
+import Doc from 'com/doc'
 import type { PageProps } from 'xueyan-react'
 import type { ArticleMeta } from 'xueyan-react-doc'
 

@@ -661,26 +661,26 @@ xtend@^4.0.0, xtend@^4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-xueyan-react-doc@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/xueyan-react-doc/-/xueyan-react-doc-1.1.2.tgz#ac21247e95255658cbddf2ef603d293fc52011cf"
-  integrity sha512-QFdmNrPYtTaL+yfy04aqO2jlyHHA9elklwC7d53aEPuslJKjXNxm6KgpqpWRkYn5HJFiWo0bppFMdjnjcZZHpQ==
+xueyan-react-doc@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/xueyan-react-doc/-/xueyan-react-doc-1.1.4.tgz#01584e562b1710214af8999b462514f18f2505e2"
+  integrity sha512-JXNVQGBG0YwVwcpou8z1VGbJOoxVEaeIYEt4LWHjbrAUUelLa/Csb705mkpuIRHYA3lcr3kgTuNbDSVKibeLbg==
   dependencies:
     "@babel/runtime" "^7.12.0"
-    xueyan-react-store "^2.0.3"
+    xueyan-react-store "^2.0.6"
 
-xueyan-react-markdown@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.1.tgz#f9cc2ddce55e5a42406991c67bcab33328538c22"
-  integrity sha512-xs4P04TOSlhqjOuOFIYfWagmyv9iBo6YJju/YHvfRLvp63HAFThZRcncZeIT1r16fbVisOomEAHFfz2imlbvtQ==
+xueyan-react-markdown@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.5.tgz#39309ac593455b37b81682257cb26996ead2fc46"
+  integrity sha512-7iw9FMFV/9JzY7lSKSHJGIEP/UA5A9G2lBloZ34nQYhTkYqaoJJ5QrmuganAfCC9jhSMy3jlFrxlS+ZLWhST/Q==
   dependencies:
     "@babel/runtime" "^7.12.0"
     react-markdown "^5.0.3"
     react-syntax-highlighter "^15.4.3"
     remark-gfm "^1.0.0"
-    xueyan-react-store "^2.0.3"
+    xueyan-react-store "^2.0.6"
 
-xueyan-react-store@^2.0.3, xueyan-react-store@^2.0.5:
+xueyan-react-store@^2.0.5, xueyan-react-store@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/xueyan-react-store/-/xueyan-react-store-2.0.6.tgz#f871db29970d40d5a411975a8a38c042d99f423e"
   integrity sha512-BrWIM1eYHeCxEWrA6T+jrx4sBX2lJtQw3ICXKLtS98T7U4Rcl3j0TV2uS1f4sDJCfsbeITmpA+pJu1wa8Eis+A==

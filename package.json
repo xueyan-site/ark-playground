@@ -1,6 +1,6 @@
 {
   "name": "xueyan-react-playground",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "xueyan-site <yang@xueyan.site>",
   "license": "MIT",
   "description": "React Code Playground Component With Typescript",
@@ -25,15 +25,12 @@
   ],
   "scripts": {
     "start": "xt start",
-    "build": "xt build",
-    "start-doc": "xt start doc",
-    "build-doc": "xt build doc",
-    "serve-doc": "xt serve doc"
+    "build": "xt build"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.0",
     "react-live": "^2.2.3",
-    "xueyan-react-markdown": "^2.0.1"
+    "xueyan-react-markdown": "^2.0.5"
   },
   "peerDependencies": {
     "classnames": "^2.3.0",

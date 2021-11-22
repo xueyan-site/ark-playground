@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import { transformCode, copyText } from './tools'
 import { AnyObject } from './types'
-import styles from './editor.scss'
+import styles from './index.scss'
 
 enum VISIBLE_STATE {
   NONE = 0,

@@ -5,7 +5,7 @@ import { Segment, useMarkdownConfig, styles as mdStyles } from 'xueyan-react-mar
 import { transformCode, copyText } from './tools'
 import { PlaygroundProps } from './types'
 import EditBoxModal from './editor'
-import styles from './playground.scss'
+import styles from './index.scss'
 
 export default function Playground(props: PlaygroundProps) {
   const [showCode, setShowCode] = useState<boolean>(props.showCode !== false)
