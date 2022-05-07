@@ -1,23 +1,57 @@
-import React, { Fragment, useState } from 'react'
+import React, { forwardRef, Fragment, useImperativeHandle, useRef, useState } from 'react'
 import cn from 'classnames'
 import { LiveProvider, LiveError, LivePreview } from 'react-live'
-import { Segment, useMarkdownConfig, styles as mdStyles } from 'xueyan-react-markdown'
+import { Segment } from 'xueyan-react-markdown'
+import { styles as themeStyles } from 'xueyan-react-style'
+import { ArrowIcon, CodeIcon, EditIcon, FileIcon, VisibleIcon } from 'xueyan-react-icon'
 import { transformCode, copyText } from './tools'
-import { PlaygroundProps } from './types'
-import EditBoxModal from './editor'
-import styles from './index.scss'
+import { EditBoxModal } from './editor'
+import styles from './playground.scss'
+import type { SegmentProps } from 'xueyan-react-markdown'
 
-export default function Playground(props: PlaygroundProps) {
+export type PlaygroundProps = SegmentProps & {
+  /** 样式 */
+  style?: React.CSSProperties
+  /** 类名 */
+  className?: string
+  /** 代码段 */
+  children: string
+  /** 代码中使用的外部变量 */
+  scope: Record<string, any>
+  /** 显示代码 */
+  showCode?: boolean
+  /** 显示运行界面 */
+  showLive?: boolean
+  /** 代码排在前面 */
+  codeFirst?: boolean
+}
+
+export interface PlaygroundRef {
+  /** 根节点 */
+  rootNode: HTMLDivElement | null
+}
+
+export const Playground = forwardRef<PlaygroundRef, PlaygroundProps>(({
+  style,
+  className,
+  children,
+  scope,
+  darkCode,
+  ...props
+}, ref) => {
+  const rootRef = useRef<HTMLDivElement>(null)
   const [showCode, setShowCode] = useState<boolean>(props.showCode !== false)
   const [showLive, setShowLive] = useState<boolean>(props.showLive !== false)
-  const [showEditor, setShowEditor] = useState<boolean>(false)
   const [codeFirst, setCodeFirst] = useState<boolean>(props.codeFirst === true)
-  const config = useMarkdownConfig(props)
-  const { scope, className, style } = props
-  const code = props.children.trim()
+  const [showEditor, setShowEditor] = useState<boolean>(false)
+  const code = children.trim()
+
+  useImperativeHandle(ref, () => ({
+    rootNode: rootRef.current
+  }), [rootRef.current])
 
   const liveBoxNode = showLive && (
-    <div className={styles.liveBox}>
+    <div className={cn(styles.box, styles.live)}>
       <LiveProvider
         language="tsx"
         noInline={true}
@@ -31,67 +65,78 @@ export default function Playground(props: PlaygroundProps) {
     </div>
   )
 
-  const spaceNode = showCode && showLive && (
-    <div className={styles.space}/>
-  )
-
   const codeBoxNode = showCode && (
-    <Segment className={mdStyles.markdown} {...config}>
+    <Segment className={cn(styles.box, styles.code)} darkCode={darkCode}>
       {'```typescript\n' + code + '\n```'}
     </Segment>
   )
 
   return (
     <div 
-      className={cn(styles.playground, config.dark && styles.dark, className)} 
+      ref={rootRef}
       style={style}
-    >
-      {codeFirst ? (
-        <Fragment>
-          {codeBoxNode}
-          {spaceNode}
-          {liveBoxNode}
-        </Fragment>
-      ) : (
-        <Fragment>
-          {liveBoxNode}
-          {spaceNode}
-          {codeBoxNode}
-        </Fragment>
+      className={cn(
+        className, 
+        styles.xrplayground,
+        darkCode && themeStyles.xrstyledark
       )}
+    >
+      <div className={styles.header}>
+        <div
+          className={styles.icon}
+          title="copy code to clipboard"
+          onClick={() => copyText(code)}
+        >
+          <FileIcon size="14px"/>
+        </div>
+        <div
+          className={cn(styles.icon, !showLive && styles.disabled)}
+          title={`${showLive ? 'hidden' : 'show'} live`}
+          onClick={() => setShowLive(!showLive)}
+        >
+          <VisibleIcon size="14px" />
+        </div>
+        <div
+          className={cn(styles.icon, !showCode && styles.disabled)}
+          title={`${showCode ? 'hidden' : 'show'} code`}
+          onClick={() => setShowCode(!showCode)}
+        >
+          <CodeIcon size="14px" />
+        </div>
+        <div
+          className={styles.icon}
+          title={`${codeFirst ? 'live' : 'code'} first`}
+          onClick={() => setCodeFirst(!codeFirst)}
+        >
+          <ArrowIcon size="14px" direction={codeFirst ? 'top' : 'bottom'}/>
+        </div>
+        <div
+          className={styles.icon}
+          title="edit code and view effect"
+          onClick={() => setShowEditor(true)}
+        >
+          <EditIcon size="14px"/>
+        </div>
+      </div>
+      <div className={styles.boxes}>
+        {codeFirst ? (
+          <Fragment>
+            {codeBoxNode}
+            {liveBoxNode}
+          </Fragment>
+        ) : (
+          <Fragment>
+            {liveBoxNode}
+            {codeBoxNode}
+          </Fragment>
+        )}
+      </div>
       <EditBoxModal
         code={code}
         scope={scope}
-        visible={showEditor}
-        setVisible={setShowEditor}
+        value={showEditor}
+        onChange={setShowEditor}
       />
-      <div className={styles.tools}>
-        <div
-          className={styles.tool}
-          onClick={() => copyText(code)}
-          title="copy code to clipboard"
-        >⌘c</div>
-        <div
-          className={cn(styles.tool, !showLive && styles.disabled)}
-          onClick={() => setShowLive(!showLive)}
-          title={`${showLive ? 'hidden' : 'show'} live`}
-        >⍵</div>
-        <div
-          className={cn(styles.tool, !showCode && styles.disabled)}
-          onClick={() => setShowCode(!showCode)}
-          title={`${showCode ? 'hidden' : 'show'} code`}
-        >⍺</div>
-        <div
-          className={styles.tool}
-          onClick={() => setCodeFirst(!codeFirst)}
-          title={`${codeFirst ? 'live' : 'code'} first`}
-        >{codeFirst ? '↑' : '↓'}</div>
-        <div
-          className={styles.tool}
-          onClick={() => setShowEditor(true)}
-          title="edit code and view effect"
-        >⌥</div>
-      </div>
     </div>
   )
-}
+})

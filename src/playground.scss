@@ -1,0 +1,47 @@
+.xrplayground {
+  margin-top: 0;
+  margin-bottom: 16px;
+  position: relative;
+  color: var(--font);
+  .header {
+    flex: none;
+    height: 32px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--base1);
+    .icon {
+      width: 48px;
+      height: 100%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      &.disabled {
+        color: var(--font2);
+      }
+      &:hover {
+        background-color: var(--area1);
+      }
+    }
+  }
+  .boxes {
+    .box:not(:first-child) {
+      border-top: 1px solid var(--area2);
+    }
+    .live {
+      padding: 14px 12px;
+      overflow: auto;
+      background-color: var(--base1);
+    }
+    .code {
+      pre {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

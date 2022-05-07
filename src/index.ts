@@ -1,9 +1,5 @@
-/**
- * @package xueyan-react-playground
- * @author xueyan-site <yang@xueyan.site>
- * @description package entry
- */
+import 'xueyan-react-style'
 
-export { default } from './playground'
+export { Playground } from './playground'
 
-export type { PlaygroundProps } from './types'
+export type { PlaygroundProps, PlaygroundRef } from './playground'

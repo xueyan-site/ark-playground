@@ -1,6 +1,6 @@
 import React from 'react'
 import { Article, Segment } from 'xueyan-react-markdown'
-import Playground from 'xueyan-react-playground'
+import { Playground } from 'xueyan-react-playground'
 
 const MARK1 = `
 ## 下载
@@ -25,7 +25,7 @@ function Switch({
 }) {
   return (
     <div onClick={() => onChange(!value)}>
-      switch: {value ? 'ON' : 'OFF'}
+      Switch: {value ? 'ON' : 'OFF'}
     </div>
   )
 }

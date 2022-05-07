@@ -1,7 +1,7 @@
 {
   "name": "xueyan-react-playground-doc",
   "version": "1.0.0",
-  "author": "xueyan-site <yang@xueyan.site>",
+  "author": "xueyan-site <xueyan@xueyan.site>",
   "description": "xueyan-react-playground project document",
   "private": true,
   "scripts": {
@@ -14,9 +14,8 @@
     "lodash": "^4.14.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "xueyan-react": "^1.4.0",
-    "xueyan-react-doc": "^1.1.4",
-    "xueyan-react-markdown": "^2.0.5"
+    "xueyan-react": "^1.5.0",
+    "xueyan-react-doc": "^2.0.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.12.0",
