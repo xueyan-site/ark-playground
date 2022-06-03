@@ -32,7 +32,6 @@ export function copyText(text: string): boolean {
     textDom.select()
     document.execCommand('Copy')
     document.body.removeChild(textDom)
-    window.alert('code coped！')
     return true
   } else {
     window.alert('The browser is not support copy to clipboard！')

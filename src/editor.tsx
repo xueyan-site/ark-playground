@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
-import { styles as themeStyles } from 'xueyan-react-style'
+import { styles as xrss } from 'xueyan-react-style'
 import { Drawer } from 'xueyan-react-drawer'
 import theme from 'prism-react-renderer/themes/vsDark'
 import { CloseIcon, FileIcon, PendingIcon } from 'xueyan-react-icon'
 import { transformCode, copyText } from './tools'
+import { Menu } from './menu'
 import styles from './editor.scss'
 
 export function EditBoxModal({
@@ -19,13 +20,14 @@ export function EditBoxModal({
   onChange: (value: boolean) => void
 }) {
   const [currCode, setCurrCode] = useState<string>(code)
+  const [rotating, setRotating] = useState<number>(0)
   return (
     <Drawer
-      size="90vh"
+      size="92vh"
       direction="bottom"
       value={value}
       onChange={onChange}
-      className={themeStyles.xrstyledark}
+      className={xrss.xrstyledark}
     >
       <LiveProvider
         language="tsx"
@@ -35,36 +37,39 @@ export function EditBoxModal({
         transformCode={transformCode}
       >
         <div className={styles.xrplaygroundeditor}>
-          <div className={styles.header}>
-            <div
-              className={styles.icon}
-              title="copy code to clipboard"
-              onClick={() => copyText(currCode)}
-            >
-              <FileIcon size="14px" />
-            </div>
-            <div
-              className={styles.icon}
-              title="reset code"
-              onClick={() => setCurrCode(code)}
-            >
-              <PendingIcon size="14px" rotating={0} />
-            </div>
-            <div
-              className={styles.icon}
-              title="close edit box modal"
-              onClick={() => onChange(false)}
-            >
-              <CloseIcon size="14px"/>
-            </div>
-          </div>
-          <div className={styles.display}>
+          <Menu
+            className={styles.header}
+            options={[
+              {
+                icon: <FileIcon />,
+                title: 'copy code to clipboard',
+                onClick: () => copyText(currCode)
+              },
+              {
+                icon: <PendingIcon rotating={rotating} />,
+                title: 'reset code',
+                onClick: () => {
+                  setRotating(300)
+                  setCurrCode(code)
+                  setTimeout(() => {
+                    setRotating(0)
+                  }, 300)
+                }
+              },
+              {
+                icon: <CloseIcon />,
+                title: 'close edit box modal',
+                onClick: () => onChange(false)
+              }
+            ]}
+          />
+          <div className={styles.live}>
             <LivePreview />
             <LiveError className={styles.errormask}/>
           </div>
-          <div className={styles.editor}>
+          <div className={styles.code}>
             <LiveEditor 
-              onChange={code => setCurrCode(code)}
+              onChange={setCurrCode}
               theme={theme}
               style={{ 
                 minWidth: '100%',

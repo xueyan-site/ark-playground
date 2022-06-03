@@ -3,15 +3,6 @@ import { Article, Segment } from 'xueyan-react-markdown'
 import { Playground } from 'xueyan-react-playground'
 
 const MARK1 = `
-## 下载
-
-\`\`\`bash
-npm i xueyan-react-playground
-\`\`\`
-
-\`\`\`bash
-yarn add xueyan-react-playground
-\`\`\`
 
 ## 常规用法
 `

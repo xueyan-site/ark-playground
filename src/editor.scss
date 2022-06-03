@@ -3,36 +3,25 @@
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
+  position: relative;
   .header {
-    flex: none;
-    height: 32px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: var(--base1);
-    .icon {
-      width: 48px;
-      height: 100%;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      &:hover {
-        background-color: var(--area1);
-      }
-    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
   }
-  .display {
+  .live {
     flex: none;
     max-height: 40%;
-    padding: 16px;
-    overflow: auto;
+    padding: 20px 12px;
     position: relative;
+    .errormask {
+      margin: 0;
+      padding: 10px;
+      white-space: inherit;
+    }
   }
-  .editor {
+  .code {
     flex: 1;
     padding: 6px;
     overflow: auto;
@@ -41,10 +30,5 @@
       outline: none;
       box-shadow: none;
     }
-  }
-  .errormask {
-    margin: 0;
-    padding: 10px;
-    white-space: inherit;
   }
 }

@@ -3,9 +3,10 @@ import cn from 'classnames'
 import { LiveProvider, LiveError, LivePreview } from 'react-live'
 import { Segment } from 'xueyan-react-markdown'
 import { styles as themeStyles } from 'xueyan-react-style'
-import { ArrowIcon, CodeIcon, EditIcon, FileIcon, VisibleIcon } from 'xueyan-react-icon'
+import { ArrowIcon, CodeIcon, EditIcon, FileIcon, VisibleIcon, InvisibleIcon } from 'xueyan-react-icon'
 import { transformCode, copyText } from './tools'
 import { EditBoxModal } from './editor'
+import { Menu } from './menu'
 import styles from './playground.scss'
 import type { SegmentProps } from 'xueyan-react-markdown'
 
@@ -81,43 +82,38 @@ export const Playground = forwardRef<PlaygroundRef, PlaygroundProps>(({
         darkCode && themeStyles.xrstyledark
       )}
     >
-      <div className={styles.header}>
-        <div
-          className={styles.icon}
-          title="copy code to clipboard"
-          onClick={() => copyText(code)}
-        >
-          <FileIcon size="14px"/>
-        </div>
-        <div
-          className={cn(styles.icon, !showLive && styles.disabled)}
-          title={`${showLive ? 'hidden' : 'show'} live`}
-          onClick={() => setShowLive(!showLive)}
-        >
-          <VisibleIcon size="14px" />
-        </div>
-        <div
-          className={cn(styles.icon, !showCode && styles.disabled)}
-          title={`${showCode ? 'hidden' : 'show'} code`}
-          onClick={() => setShowCode(!showCode)}
-        >
-          <CodeIcon size="14px" />
-        </div>
-        <div
-          className={styles.icon}
-          title={`${codeFirst ? 'live' : 'code'} first`}
-          onClick={() => setCodeFirst(!codeFirst)}
-        >
-          <ArrowIcon size="14px" direction={codeFirst ? 'top' : 'bottom'}/>
-        </div>
-        <div
-          className={styles.icon}
-          title="edit code and view effect"
-          onClick={() => setShowEditor(true)}
-        >
-          <EditIcon size="14px"/>
-        </div>
-      </div>
+      <Menu 
+        className={styles.header}
+        options={[
+          {
+            icon: <CodeIcon />,
+            disabled: !showCode,
+            title: `${showCode ? 'hidden' : 'show'} code`,
+            onClick: () => setShowCode(!showCode)
+          },
+          {
+            icon: showLive ? <VisibleIcon /> : <InvisibleIcon />,
+            disabled: !showLive,
+            title: `${showLive ? 'hidden' : 'show'} live`,
+            onClick: () => setShowLive(!showLive)
+          },
+          {
+            icon: <ArrowIcon direction={codeFirst ? 'top' : 'bottom'}/>,
+            title: `${codeFirst ? 'live' : 'code'} first`,
+            onClick: () => setCodeFirst(!codeFirst)
+          },
+          {
+            icon: <FileIcon />,
+            title: 'copy code to clipboard',
+            onClick: () => copyText(code)
+          },
+          {
+            icon: <EditIcon />,
+            title: 'edit code and view effect',
+            onClick: () => setShowEditor(true)
+          }
+        ]}
+      />
       <div className={styles.boxes}>
         {codeFirst ? (
           <Fragment>

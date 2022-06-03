@@ -3,22 +3,25 @@ const pkg = require('../package.json')
 module.exports = {
   type: 'react-csr',
   index: 'zh',
-  track: false,
   path: pkg.name,
   alias: {
-    ast: 'pub/ast',
-    com: 'pub/com',
-    utl: 'pub/utl',
+    'ast': 'pub/ast',
+    'com': 'pub/com',
+    'utl': 'pub/utl',
     'xueyan-react-playground': '../src',
-    'xueyan-react-style': '../node_modules/xueyan-react-style',
-    'xueyan-react-markdown': '../node_modules/xueyan-react-markdown'
+    'xueyan-react-icon': '../node_modules/xueyan-react-icon',
+    'xueyan-react-style': '../node_modules/xueyan-react-style'
+  },
+  serve: {
+    port: 12016
   },
   module: {
     externals: {
-      react: 'React',
+      'typescript': 'ts',
+      'react': 'React',
       'react-dom': 'ReactDOM',
-      classnames: 'classNames',
-      lodash: '_'
+      'classnames': 'classNames',
+      'lodash': '_'
     },
     rules: {
       raw: {
@@ -44,41 +47,41 @@ module.exports = {
         key: 'favicon',
         rel: "icon",
         type: "image/png",
-        href: "{{XT_PATH}}favicon.png"
+        href: "{{XT_ASSETS_PATH}}favicon.png"
       }
     ],
     styles: [
       {
-        key: 'normalize',
-        rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css'
-      },
-      {
         key: 'global',
         rel: 'stylesheet',
-        href: '{{XT_PATH}}global.css'
+        href: '{{XT_ASSETS_PATH}}global.css'
       }
     ],
     scripts: [
       {
+        key: 'typescript',
+        defer: true,
+        src: 'https://xueyan.site/ast/typescript.js'
+      },
+      {
         key: 'react',
         defer: true,
-        src: 'https://cdn.jsdelivr.net/npm/react@16.12.0/umd/react.production.min.js'
+        src: "https://xueyan.site/ast/react.js"
       },
       {
         key: 'react-dom',
         defer: true,
-        src: 'https://cdn.jsdelivr.net/npm/react-dom@16.12.0/umd/react-dom.production.min.js'
+        src: "https://xueyan.site/ast/react-dom.js"
       },
       {
         key: 'classnames',
         defer: true,
-        src: 'https://cdn.jsdelivr.net/npm/classnames@2.3.1/index.min.js'
+        src: "https://xueyan.site/ast/classnames.js"
       },
       {
         key: 'lodash',
         defer: true,
-        src: 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
+        src: "https://xueyan.site/ast/lodash.js"
       }
     ]
   }
