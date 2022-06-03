@@ -28,7 +28,7 @@ const COLLECTIONS: Collection<string,string>[] = [
     contents: [
       {
         value: '0001',
-        label: '用法',
+        label: '介绍',
         content: () => import('./0001')
       }
     ]

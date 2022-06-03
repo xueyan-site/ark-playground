@@ -67,7 +67,11 @@ export const Playground = forwardRef<PlaygroundRef, PlaygroundProps>(({
   )
 
   const codeBoxNode = showCode && (
-    <Segment className={cn(styles.box, styles.code)} darkCode={darkCode}>
+    <Segment 
+      className={cn(styles.box, styles.code)} 
+      darkCode={darkCode} 
+      {...props}
+    >
       {'```typescript\n' + code + '\n```'}
     </Segment>
   )

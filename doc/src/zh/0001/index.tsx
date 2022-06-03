@@ -3,8 +3,47 @@ import { Article, Segment } from 'xueyan-react-markdown'
 import { Playground } from 'xueyan-react-playground'
 
 const MARK1 = `
+React Typescript 代码演示组件库，用于实现在线修改代码，实时显示结果。
 
-## 常规用法
+## 使用示例
+
+\`\`\`
+import React from 'react'
+import Switch from 'Switch'
+
+function Switch({
+  value,
+  onChange
+}: {
+  value: boolean
+  onChange: (value: boolean) => void
+}) {
+  return (
+    <div onClick={() => onChange(!value)}>
+      Switch: {value ? 'ON' : 'OFF'}
+    </div>
+  )
+}
+
+const code1 = \`
+import React from 'react'
+
+export default function UseSwitch() {
+  const [state, setState] = React.useState<boolean>(false)
+  return <Switch value={state} onChange={setState}/>
+}
+\`
+
+export default function Main() {
+  return (
+    <Playground scope={{ React, Switch }}>
+      {code1}
+    </Playground>
+  )
+}
+\`\`\`
+
+## 运行效果
 `
 
 function Switch({
