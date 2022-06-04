@@ -41,9 +41,9 @@ export const Playground = forwardRef<PlaygroundRef, PlaygroundProps>(({
   ...props
 }, ref) => {
   const rootRef = useRef<HTMLDivElement>(null)
-  const [showCode, setShowCode] = useState<boolean>(props.showCode !== false)
+  const [showCode, setShowCode] = useState<boolean|undefined>(props.showCode)
   const [showLive, setShowLive] = useState<boolean>(props.showLive !== false)
-  const [codeFirst, setCodeFirst] = useState<boolean>(props.codeFirst === true)
+  const [codeFirst, setCodeFirst] = useState<boolean|undefined>(props.codeFirst)
   const [showEditor, setShowEditor] = useState<boolean>(false)
   const code = children.trim()
 

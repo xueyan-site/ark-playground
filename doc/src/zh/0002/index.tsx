@@ -48,9 +48,9 @@ interface PlaygroundRef {
 | className | 类名 | \`? string\` |  |
 | children | 代码段 | \`string\` | 必传 |
 | scope | 代码中使用的外部变量 | \`Record<string, any>\` | 必传（代码段依赖于外部变量） |
-| showCode | 显示代码 | \`? boolean\` |  |
-| showLive | 显示运行界面 | \`? boolean\` |  |
-| codeFirst | 代码排在前面 | \`? boolean\` |  |
+| showLive | 显示运行界面 | \`? boolean\` | 默认为 true |
+| showCode | 显示代码 | \`? boolean\` | 默认为 false  |
+| codeFirst | 代码排在前面 | \`? boolean\` | 默认为 false |
 `
 
 export default function Main() {
