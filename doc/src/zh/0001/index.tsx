@@ -1,6 +1,6 @@
 import React from 'react'
 import { Article, Segment } from 'xueyan-react-markdown'
-import { Playground } from 'xueyan-react-playground'
+import { Playground } from 'ark-playground'
 
 const MARK1 = `
 React Typescript 代码演示组件库，用于实现在线修改代码，实时显示结果。

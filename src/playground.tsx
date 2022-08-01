@@ -1,14 +1,14 @@
 import React, { forwardRef, Fragment, useImperativeHandle, useRef, useState } from 'react'
 import cn from 'classnames'
 import { LiveProvider, LiveError, LivePreview } from 'react-live'
-import { Segment } from 'xueyan-react-markdown'
-import { styles as themeStyles } from 'xueyan-react-style'
-import { ArrowIcon, CodeIcon, EditIcon, FileIcon, VisibleIcon, InvisibleIcon } from 'xueyan-react-icon'
+import { Segment } from 'ark-markdown'
+import { styles as themeStyles } from 'solor'
+import { ArrowIcon, CodeIcon, EditIcon, FileIcon, VisibleIcon, InvisibleIcon } from 'sicon'
 import { transformCode, copyText } from './tools'
 import { EditBoxModal } from './editor'
 import { Menu } from './menu'
 import styles from './playground.scss'
-import type { SegmentProps } from 'xueyan-react-markdown'
+import type { SegmentProps } from 'ark-markdown'
 
 export type PlaygroundProps = SegmentProps & {
   /** 样式 */

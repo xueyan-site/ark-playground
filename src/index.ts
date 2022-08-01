@@ -1,4 +1,4 @@
-import 'xueyan-react-style'
+import 'solor'
 
 export { Playground } from './playground'
 

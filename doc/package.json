@@ -1,8 +1,8 @@
 {
-  "name": "xueyan-react-playground-doc",
+  "name": "ark-playground-doc",
   "version": "1.0.0",
   "author": "xueyan-site <xueyan@xueyan.site>",
-  "description": "xueyan-react-playground document",
+  "description": "ark-playground document",
   "private": true,
   "scripts": {
     "start": "xt start",
