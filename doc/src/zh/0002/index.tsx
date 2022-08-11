@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article, Segment } from 'xueyan-react-markdown'
+import { Article, Segment } from 'ark-markdown'
 
 const MARK1 = `
 React Typescript 代码演示组件
@@ -40,7 +40,7 @@ interface PlaygroundRef {
 
 ## PlaygroundProps
 
-继承 [SegmentProps](/xueyan-react-markdown?doc=0004#segmentprops) 所有属性
+继承 [SegmentProps](/ark-markdown?doc=0004#segmentprops) 所有属性
 
 | 属性 | 名称 | 类型 | 说明 |
 | - | - | - | - |
